@@ -1,0 +1,41 @@
+---
+title: "Assignment 1 Temperature"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readr)
+Bikeshare <- read.csv("Bikeshare.csv")
+```
+
+###1. Identify the variable type (quantitative (continuous or discrete), categorical (nominal, binary, or ordinal). Explain your reasoning.
+
+Temperature is a continuous quantitative variable, due to temperature values not being disjointed and being able to take on any value between the interval of 0 to 1.
+
+###2. Using R, create an appropriate graphic showing the distribution of the data for the respective variable. Remember labels and titles.
+
+```{r echo = FALSE}
+temp.histogram <- ggplot(Bikeshare, aes(x=temp)) + geom_histogram(breaks=seq(0,1, by = 0.125), color = "darkblue", fill = "lightblue")
+temp.histogram
+```
+
+###3.	Discuss the distribution for each variable based on the graphs in #2. 
+#### •	For categorical, compare counts or proportions between categories. Do they look as you’d expect, given the definitions of the variables? 
+#### •	For quantitative, discuss the approximate center, range, shape, and outliers (if any).
+
+
+Temperature has a mean `r mean(Bikeshare$temp)` (median: `r (median(Bikeshare$temp))`). With a minimum of `r min(Bikeshare$temp)` and max `r max(Bikeshare$temp)`. The distribution is roughly bimodal and from the 1.5 * IQR rule there are no possible outliers.
+
+###4.	Compute appropriate summary statistics for each variable.
+
+```{r echo = FALSE}
+writeLines("Summary Statistics for Temperature")
+summary(Bikeshare$temp)
+writeLines("Standard Deviation =")
+sd(Bikeshare$temp)
+writeLines(" ")
+writeLines("Number of Observations")
+nrow(Bikeshare)
+```

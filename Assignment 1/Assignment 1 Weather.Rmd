@@ -1,0 +1,37 @@
+---
+title: "Assignment 1 Weather"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readr)
+Bikeshare <- read.csv("Bikeshare.csv")
+```
+
+###1. Identify the variable type (quantitative (continuous or discrete), categorical (nominal, binary, or ordinal). Explain your reasoning.
+
+Weather is a categorical variable under a nominal scale. Types of weather are disjointed categories and have been assigned arbitary values to distinguish between them.
+
+###2. Using R, create an appropriate graphic showing the distribution of the data for the respective variable. Remember labels and titles.
+
+``` {r echo = FALSE}
+weather.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = weather)) + labs(title = "Types of Weather Across 2011-2012") + scale_x_continuous(breaks = c(1, 2, 3), labels = c("Clear/partly cloudy", "mist/cloudy/partly cloudy", "light rain/snow"))
+plot(weather.barplot)
+```
+
+###3.	Discuss the distribution for each variable based on the graphs in #2. 
+#### •	For categorical, compare counts or proportions between categories. Do they look as you’d expect, given the definitions of the variables? 
+#### •	For quantitative, discuss the approximate center, range, shape, and outliers (if any).
+
+For the categorical variable of weather the proportion between categories was not as expected. It was suprising to see 0 counts of heavy rain/snow/storm across two years. however after examining the data table, there was indeed no count for that type of weather.
+
+###4.	Compute appropriate summary statistics for each variable.
+
+```{r echo = FALSE}
+meme <- matrix(c(463,63.34, 247,33.79, 21,2.87, 0,0), nrow = 4, ncol = 2, byrow = TRUE,
+               dimnames = list(c("clear/partly cloudy", "mist/cloudy/partly cloudy", "light rain/snow", "heavy rain/snow/storm"),
+                               c("Count", "Percentage")))
+print(meme)
+```

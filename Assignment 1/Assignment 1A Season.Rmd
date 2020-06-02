@@ -1,0 +1,41 @@
+---
+title: "Assignment 1A, Season"
+output: pdf_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readr)
+Bikeshare <- read.csv("Bikeshare.csv")
+```
+
+###1. Identify the variable type (quantitative (continuous or discrete), categorical (nominal, binary, or ordinal). Explain your reasoning.
+
+>Seasons are a categorical variable under a nominal scale. Seasons consist of disjointed categories, they do not have any numeric value thus they were assigned an arbitary value to distinguish between the different seasons.
+                               
+###2. Using R, create an appropriate graphic showing the distribution of the data for the respective variable. Remember labels and titles.
+
+
+```{r echo = FALSE}
+season.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = season)) + labs(title = "Days in Each Season") + scale_x_continuous(breaks = c(1, 2, 3, 4), labels = c("Winter", "Spring", "Summer", "Fall"))
+plot(season.barplot)
+```
+                               
+###3.	Discuss the distribution for each variable based on the graphs in #2. 
+#### •	For categorical, compare counts or proportions between categories. Do they look as you’d expect, given the definitions of the variables? 
+#### •	For quantitative, discuss the approximate center, range, shape, and outliers (if any).
+
+For the categorical variable, season, the proportion between categories is as expected. The variable is simple, there are 4 possible seasons  and counts for the seasons were taken across two years.
+       
+                               
+###4.	Compute appropriate summary statistics for each variable.
+
+For a categorical variable the summar statistic will be counts and percentages
+```{r echo = FALSE}
+season.setup <- table(Bikeshare$season)
+season.table = cbind(season.setup, round(prop.table(season.setup)*100,2))
+colnames(season.table) = c("Count", "Percentage")
+rownames(season.table) = c("Winter", "Spring", "Summer", "Fall")
+writeLines("Summary Statistics for Seasons (Days)")
+print(season.table)
+```
