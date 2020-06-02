@@ -12,12 +12,12 @@ Bikeshare <- read.csv("Bikeshare.csv")
 
 ###1. Identify the variable type (quantitative (continuous or discrete), categorical (nominal, binary, or ordinal). Explain your reasoning.
 
-Years are a categorical variable under an ordinal scale. In this case the years are disjointed categories, being cateogrized as 2011 or 2012. In addition there is ranked ordering of the years, making it an ordinal variable.
+Years are a categorical variable under an ordinal scale. In this case the years are disjointed categories, being categorized as 2011 or 2012. In addition there is ranked ordering of the years as one year has to be greater than another, making it an ordinal variable.
 
 ###2. Using R, create an appropriate graphic showing the distribution of the data for the respective variable. Remember labels and titles.
 
 ```{r echo = FALSE}
-yr.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = yr)) + labs(title = "Days in Each Year") + scale_x_continuous(breaks = c(0, 1), labels = c("2011", "2012"))
+yr.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = yr)) + labs(title = "Days in Each Year") + scale_x_continuous(breaks = c(0, 1), labels = c("2011", "2012")) + ylab("Days") + xlab("Year")
 plot(yr.barplot)
 ```
 

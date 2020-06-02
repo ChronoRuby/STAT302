@@ -17,7 +17,8 @@ Weather is a categorical variable under a nominal scale. Types of weather are di
 ###2. Using R, create an appropriate graphic showing the distribution of the data for the respective variable. Remember labels and titles.
 
 ``` {r echo = FALSE}
-weather.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = weather)) + labs(title = "Types of Weather Across 2011-2012") + scale_x_continuous(breaks = c(1, 2, 3), labels = c("Clear/partly cloudy", "mist/cloudy/partly cloudy", "light rain/snow"))
+Bikeshare$weather <- factor(Bikeshare$weather, levels = c("1","2","3","4"))
+weather.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = weather)) + labs(title = "Weather Over 2011-2012") + scale_x_discrete(breaks = c(1, 2, 3, 4), labels = c("Clear/partly cloudy", "Mist/cloudy/partly cloudy", "Light rain/snow", "Heavy rain/snow/storm"), drop = FALSE) + ylab("Days") + xlab("Weather")
 plot(weather.barplot)
 ```
 

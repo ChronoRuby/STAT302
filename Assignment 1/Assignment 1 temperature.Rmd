@@ -17,7 +17,7 @@ Temperature is a continuous quantitative variable, due to temperature values not
 ###2. Using R, create an appropriate graphic showing the distribution of the data for the respective variable. Remember labels and titles.
 
 ```{r echo = FALSE}
-temp.histogram <- ggplot(Bikeshare, aes(x=temp)) + geom_histogram(breaks=seq(0,1, by = 0.125), color = "darkblue", fill = "lightblue")
+temp.histogram <- ggplot(Bikeshare, aes(x=temp)) + geom_histogram(breaks=seq(0,1, by = 0.125), color = "darkblue", fill = "lightblue") + labs(title = "Temperature Over 2011-2012") + xlab("Normalized Air Temperature") + ylab("Days")
 temp.histogram
 ```
 

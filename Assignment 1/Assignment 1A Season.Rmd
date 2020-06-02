@@ -17,7 +17,7 @@ Bikeshare <- read.csv("Bikeshare.csv")
 
 
 ```{r echo = FALSE}
-season.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = season)) + labs(title = "Days in Each Season") + scale_x_continuous(breaks = c(1, 2, 3, 4), labels = c("Winter", "Spring", "Summer", "Fall"))
+season.barplot <- ggplot(data = Bikeshare) + geom_bar(mapping = aes(x = season)) + labs(title = "Days in Each Season Over 2011-2012") + scale_x_continuous(breaks = c(1, 2, 3, 4), labels = c("Winter", "Spring", "Summer", "Fall")) + ylab("Days") + xlab("Seasons")
 plot(season.barplot)
 ```
                                
@@ -30,7 +30,7 @@ For the categorical variable, season, the proportion between categories is as ex
                                
 ###4.	Compute appropriate summary statistics for each variable.
 
-For a categorical variable the summar statistic will be counts and percentages
+For a categorical variable the summary statistic will be counts and percentages
 ```{r echo = FALSE}
 season.setup <- table(Bikeshare$season)
 season.table = cbind(season.setup, round(prop.table(season.setup)*100,2))
